@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cal.css" type="text/css">
+    <link rel="icon" href="img/calculator illustration_4552458.png">
+</head>
+
+<body>
+    <div class="body">
+        <div class="cal">
+            <div>
+                <div class="tog" onclick="myFunction()">
+                    <div class="togl"></div>
+                </div>
+            </div>
+            <form name="forms" class="inp">
+
+                <input type="text" name="answer" id="f">
+                <br><br>
+                <input class="inpu" id="c" type="button" value=" C " onclick="forms.answer.value= '' ">
+                <input class="inpu" type="button" value=" % " onclick="forms.answer.value =eval(forms.answer.value)/100">
+                <input class="inpu" type="button" value=" / " onclick="forms.answer.value += '/'">
+                <br><br>
+                <input class="inpu" type="button" value=" 7 " onclick="forms.answer.value += '7'">
+                <input class="inpu" type="button" value=" 8 " onclick="forms.answer.value += '8'">
+                <input class="inpu" type="button" value=" 9 " onclick="forms.answer.value += '9'">
+                <input class="inpu" type="button" value=" * " onclick="forms.answer.value += '*'">
+                <br><br>
+                <input class="inpu" type="button" value=" 4 " onclick="forms.answer.value += '4'">
+                <input class="inpu" type="button" value=" 5 " onclick="forms.answer.value += '5'">
+                <input class="inpu" class="in" type="button" value=" 6 " onclick="forms.answer.value += '6'">
+                <input class="inpu" type="button" value=" - " onclick="forms.answer.value += '-'">
+                <br><br>
+                <input class="inpu" type="button" value=" 1 " onclick="forms.answer.value += '1'">
+                <input class="inpu" type="button" value=" 2 " onclick="forms.answer.value += '2'">
+                <input class="inpu" type="button" value=" 3 " onclick="forms.answer.value += '3'">
+                <input class="inpu" type="button" value=" + " onclick="forms.answer.value += '+'">
+                <br><br>
+                <input class="inpu" type="button" value=" 0 " onclick="forms.answer.value += '0'">
+                <input class="inpu" type="button" value=" . " onclick="forms.answer.value += '.'">
+                <input class="inpu" id="eq" type="button" value=" = " onclick="forms.answer.value = eval(forms.answer.value)">
+
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function myFunction() {
+            var element = document.querySelector(".cal")
+            element.classList.toggle("dark-mode");
+            var next = document.querySelector(".body")
+            next.classList.toggle("dark-mode-body");
+        }
+
+        let clickme=document.querySelectorAll(".inpu")
+
+        clickme.forEach(e =>{
+            
+            e.addEventListener("click",function(){
+                if(document.querySelector(".cal").classList.contains("dark-mode")){
+                    this.setAttribute("style","background:#233329; color:#D6D5CB;")
+                    setTimeout(()=>{
+                    this.setAttribute("style","background:black; color:#white;")
+                },100)
+                }else
+                this.setAttribute("style","box-shadow:none")
+                setTimeout(()=>{
+                    this.setAttribute("style","box-shadow: 5px 5px 20px -10px black;")
+                },100)
+
+
+                let man= document.querySelector('#f').value
+                
+                if(man.length<=9){
+                    document.querySelector('#f').setAttribute('style','font-size:50px;padding: 10px 0px;')
+                }
+                if(man.length>=9){
+                    document.querySelector('#f').setAttribute('style','font-size:40px;padding: 17px 0px;')
+                }
+                if(man.length>=11){
+                    document.querySelector('#f').setAttribute('style','font-size:30px;padding: 23px 0px;')
+                }
+                if(man.length>=14){
+                    document.querySelector('#f').setAttribute('style','font-size:25px;padding: 25px 0px;')
+                }
+                if(man.length>=18){
+                    alert("What's wrong with you!😒 Are you Bill Gates?🙄 Plz Give less than 18 numbers😊")
+                    location.reload();
+                }
+            })
+
+            /*e.addEventListener("mouseout",function(){
+                this.setAttribute("style","box-shadow: 5px 5px 20px -10px black;")
+                
+            })*/
+
+        })
+        /*clickme.addEventListener("click",function(){
+            alert("it's working")
+        })*/
+        
+ 
+       
+    </script>
+</body>
+
+</html>
